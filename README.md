@@ -237,6 +237,8 @@ Another challenge was organizing the project using clean OOP principles.
 
 # Example Git Commits
 
+
+
 - init: project structure
 - feat(vertex): implemented Vertex class
 - feat(edge): added Edge class
