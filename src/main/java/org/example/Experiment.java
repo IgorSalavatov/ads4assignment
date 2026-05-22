@@ -2,7 +2,7 @@ package org.example;
 
 public class Experiment {
 
-    // Run BFS and DFS for graph
+    // Run BFS, DFS and Dijkstra for graph
     public void runTraversals(Graph g) {
 
         long bfsStart = System.nanoTime();
@@ -13,8 +13,22 @@ public class Experiment {
         g.dfs(0);
         long dfsEnd = System.nanoTime();
 
-        System.out.println("BFS Execution Time: " + (bfsEnd - bfsStart) + " ns");
-        System.out.println("DFS Execution Time: " + (dfsEnd - dfsStart) + " ns");
+        // ===== ADDED =====
+        long dijkstraStart = System.nanoTime();
+        g.dijkstra(0);
+        long dijkstraEnd = System.nanoTime();
+        // =================
+
+        System.out.println("BFS Execution Time: "
+                + (bfsEnd - bfsStart) + " ns");
+
+        System.out.println("DFS Execution Time: "
+                + (dfsEnd - dfsStart) + " ns");
+
+        // ===== ADDED =====
+        System.out.println("Dijkstra Execution Time: "
+                + (dijkstraEnd - dijkstraStart) + " ns");
+        // =================
     }
 
     // Create graph with selected size
@@ -27,15 +41,21 @@ public class Experiment {
             graph.addVertex(new Vertex(i));
         }
 
-        // Add edges
+        // ===== CHANGED =====
+        // Add weighted edges
         for (int i = 0; i < vertices - 1; i++) {
-            graph.addEdge(i, i + 1);
 
-            // Extra connections for more realistic graph
+            graph.addEdge(i, i + 1, (i + 1) * 2);
+
+            // Extra connections
             if (i + 2 < vertices) {
-                graph.addEdge(i, i + 2);
+
+                graph.addEdge(i,
+                        i + 2,
+                        (i + 2) * 3);
             }
         }
+        // ===================
 
         return graph;
     }
@@ -48,7 +68,8 @@ public class Experiment {
         for (int size : sizes) {
 
             System.out.println("\n============================");
-            System.out.println("Graph Size: " + size + " vertices");
+            System.out.println("Graph Size: "
+                    + size + " vertices");
             System.out.println("============================");
 
             Graph graph = createGraph(size);
@@ -62,7 +83,9 @@ public class Experiment {
     }
 
     public void printResults() {
-        System.out.println("\nExperiment completed successfully.");
+
+        System.out.println(
+                "\nExperiment completed successfully.");
     }
 }
 

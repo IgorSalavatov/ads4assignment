@@ -5,9 +5,18 @@ public class Edge {
     private Vertex source;
     private Vertex destination;
 
-    public Edge(Vertex source, Vertex destination) {
+    // ===== ADDED =====
+    private int weight;
+    // =================
+
+    // ===== CHANGED CONSTRUCTOR =====
+    public Edge(Vertex source, Vertex destination, int weight) {
         this.source = source;
         this.destination = destination;
+
+        // ===== ADDED =====
+        this.weight = weight;
+        // =================
     }
 
     public Vertex getSource() {
@@ -18,8 +27,20 @@ public class Edge {
         return destination;
     }
 
+    // ===== ADDED =====
+    public int getWeight() {
+        return weight;
+    }
+    // =================
+
     @Override
     public String toString() {
-        return source.getId() + " -> " + destination.getId();
+
+        // ===== CHANGED =====
+        return source.getId() +
+                " -> " +
+                destination.getId() +
+                " (weight: " + weight + ")";
+        // ===================
     }
 }

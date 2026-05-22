@@ -248,3 +248,74 @@ Another challenge was organizing the project using clean OOP principles.
 - docs(readme): added analysis and results
 - perf(cleanup): improved code
 - release: v1.0
+
+
+# Bonus Task — Dijkstra Algorithm
+
+## Description
+The graph system was extended to support weighted edges and Dijkstra’s shortest path algorithm.
+
+## Changes Made
+- Added weight field to Edge class
+- Updated adjacency list to store weighted edges
+- Modified addEdge() method to accept edge weight
+- Implemented Dijkstra shortest path algorithm
+- Added Dijkstra performance testing
+
+## Weighted Graph
+Each edge now stores:
+- source vertex
+- destination vertex
+- edge weight
+
+Example:
+```java
+graph.addEdge(0, 1, 4);
+```
+
+## Dijkstra Algorithm
+The algorithm finds the shortest path from a starting vertex to all other vertices in the graph.
+
+### Method
+```java
+void dijkstra(int start)
+```
+
+## Time Complexity
+Dijkstra Algorithm Complexity:
+
+O(V²)
+
+where:
+- V = number of vertices
+
+## Example Output
+
+```text
+Dijkstra shortest paths:
+
+From 0 to 0 = 0
+From 0 to 1 = 2
+From 0 to 2 = 6
+From 0 to 3 = 11
+```
+
+## Screenshots
+
+### Graph Structure
+![Graph Structure](docs/screenshots/graph_structure.jpg)
+
+### BFS Traversal
+![BFS Traversal](docs/screenshots/bfs_traversal.jpg)
+
+### DFS Traversal
+![DFS Traversal](docs/screenshots/dfs_traversal.jpg)
+
+### Dijkstra Output
+![Dijkstra Output](docs/screenshots/dijkstra.png)
+
+### Performance Results
+![Performance Results](docs/screenshots/performance_results.jpg)
+
+## Conclusion
+The project was successfully extended with weighted graph support and Dijkstra’s shortest path algorithm.
